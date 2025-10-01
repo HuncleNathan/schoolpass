@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debtors - School Pass</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Header Include -->
+    <div data-include="header.html"></div>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title"><i class="bi bi-exclamation-circle me-2"></i> Debtors</h1>
+                <p class="page-description">View and manage students with outstanding payments</p>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sendRemindersModal">
+                    <i data-lucide="send"></i>
+                    Send Reminders
+                </button>
+            </div>
+
+            <!-- Debtors Stats Cards -->
+            <div class="stats-grid">
+                <div class="stats-card warning clickable">
+                    <div class="stats-icon">
+                        <i data-lucide="alert-triangle"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-value">₦2.1M</h3>
+                        <p class="stats-title">Total Outstanding</p>
+                        <p class="stats-description">Across 35 accounts</p>
+                        <div class="stats-trend negative">
+                            <i data-lucide="trending-up"></i>
+                            <span>+8%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-card danger clickable">
+                    <div class="stats-icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-value">27</h3>
+                        <p class="stats-title">Overdue Accounts</p>
+                        <p class="stats-description">Requiring immediate attention</p>
+                        <div class="stats-trend negative">
+                            <i data-lucide="trending-up"></i>
+                            <span>+12%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-card danger clickable">
+                    <div class="stats-icon">
+                        <i data-lucide="alert-octagon"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-value">8</h3>
+                        <p class="stats-title">Critical Cases</p>
+                        <p class="stats-description">30+ days overdue</p>
+                        <div class="stats-trend negative">
+                            <i data-lucide="trending-up"></i>
+                            <span>+15%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Debtors Filter Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i data-lucide="filter"></i>
+                        Filter Debtors
+                    </h3>
+                    <p class="card-description">Search and filter debtors records</p>
+                </div>
+                <div class="card-content">
+                    <form class="form-grid">
+                        <div class="form-group">
+                            <label for="debtorClass">Class</label>
+                            <select id="debtorClass" class="form-input">
+                                <option value="">All Classes</option>
+                                <option value="JSS 1">JSS 1</option>
+                                <option value="JSS 2">JSS 2</option>
+                                <option value="JSS 3">JSS 3</option>
+                                <option value="SS 1">SS 1</option>
+                                <option value="SS 2">SS 2</option>
+                                <option value="SS 3">SS 3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="debtorTerm">Term</label>
+                            <select id="debtorTerm" class="form-input">
+                                <option value="">All Terms</option>
+                                <option value="1">First Term</option>
+                                <option value="2">Second Term</option>
+                                <option value="3">Third Term</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="debtorStatus">Status</label>
+                            <select id="debtorStatus" class="form-input">
+                                <option value="">All Statuses</option>
+                                <option value="unpaid">Unpaid</option>
+                                <option value="partial">Partial Payment</option>
+                                <option value="overdue">Overdue</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>&nbsp;</label>
+                            <button type="submit" class="btn btn-primary">
+                                <i data-lucide="filter"></i>
+                                Apply Filters
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Debtors List Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i data-lucide="list"></i>
+                        Outstanding Payments
+                    </h3>
+                    <p class="card-description">Students with unpaid or partially paid fees</p>
+                </div>
+                <div class="card-content">
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Class</th>
+                                    <th>Term</th>
+                                    <th>Amount Due</th>
+                                    <th>Amount Paid</th>
+                                    <th>Balance</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Okafor Chidi</td>
+                                    <td>SS 1B</td>
+                                    <td>First Term</td>
+                                    <td>₦120,000</td>
+                                    <td>₦60,000</td>
+                                    <td>₦60,000</td>
+                                    <td><span class="badge warning">Partial</span></td>
+                                    <td>
+                                        <button class="btn btn-sm" title="View Details">
+                                            <i data-lucide="eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline" title="Record Payment">
+                                            <i data-lucide="dollar-sign"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Yusuf Mohammed</td>
+                                    <td>JSS 1B</td>
+                                    <td>First Term</td>
+                                    <td>₦85,000</td>
+                                    <td>₦0</td>
+                                    <td>₦85,000</td>
+                                    <td><span class="badge danger">Unpaid</span></td>
+                                    <td>
+                                        <button class="btn btn-sm" title="View Details">
+                                            <i data-lucide="eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline" title="Record Payment">
+                                            <i data-lucide="dollar-sign"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Eze Chinwe</td>
+                                    <td>JSS 2A</td>
+                                    <td>First Term</td>
+                                    <td>₦90,000</td>
+                                    <td>₦45,000</td>
+                                    <td>₦45,000</td>
+                                    <td><span class="badge warning">Partial</span></td>
+                                    <td>
+                                        <button class="btn btn-sm" title="View Details">
+                                            <i data-lucide="eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline" title="Record Payment">
+                                            <i data-lucide="dollar-sign"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Bello Ahmed</td>
+                                    <td>SS 2A</td>
+                                    <td>First Term</td>
+                                    <td>₦125,000</td>
+                                    <td>₦0</td>
+                                    <td>₦125,000</td>
+                                    <td><span class="badge danger">Unpaid</span></td>
+                                    <td>
+                                        <button class="btn btn-sm" title="View Details">
+                                            <i data-lucide="eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline" title="Record Payment">
+                                            <i data-lucide="dollar-sign"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="table-actions">
+                        <button class="btn btn-outline">
+                            <i data-lucide="printer"></i>
+                            Print Report
+                        </button>
+                        <div class="pagination">
+                            <button class="btn btn-sm btn-outline" disabled>Previous</button>
+                            <span class="pagination-info">Page 1 of 3</span>
+                            <button class="btn btn-sm btn-outline">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Powered by <a href="https://veritas.com" target="_blank" class="veritas-link">Veritas</a></p>
+        </div>
+    </footer>
+
+    <!-- Send Reminders Modal -->
+    <div class="modal" id="sendRemindersModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i data-lucide="send"></i>
+                    Send Payment Reminders
+                </h3>
+                <button class="modal-close" data-bs-dismiss="modal">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="reminderRecipients">Recipients</label>
+                        <select id="reminderRecipients" class="form-input">
+                            <option value="all">All Debtors</option>
+                            <option value="unpaid">Only Unpaid</option>
+                            <option value="partial">Only Partial Payments</option>
+                            <option value="overdue">Only Overdue</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="reminderMessage">Message</label>
+                        <textarea id="reminderMessage" class="form-input" rows="5">
+Dear Parent/Guardian,
+
+This is a reminder that your ward has outstanding school fees for the current term. Please make the payment as soon as possible to avoid any inconveniences.
+
+Thank you for your cooperation.
+
+Best regards,
+School Administration
+                        </textarea>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label>Send Via</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="reminderSMS" checked>
+                                <span class="checkmark"></span>
+                                SMS
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="reminderEmail">
+                                <span class="checkmark"></span>
+                                Email
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary">Send Reminders</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="include.js"></script>
+    <script src="script.js"></script>
+    <script src="debtors.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>

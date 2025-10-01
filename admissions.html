@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions - School Pass</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Header (same structure as students.html) -->
+     <div data-include="header.html"></div>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Admissions</h1>
+                <p class="page-description">Manage student admissions and registrations</p>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <form id="admissionForm" class="admission-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth</label>
+                                <input type="date" id="dateOfBirth" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" class="form-input" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="class">Class</label>
+                                <select id="class" class="form-input" required>
+                                    <option value="">Select Class</option>
+                                    <option value="JSS 1A">JSS 1A</option>
+                                    <option value="JSS 1B">JSS 1B</option>
+                                    <option value="JSS 1C">JSS 1C</option>
+                                    <option value="JSS 2A">JSS 2A</option>
+                                    <option value="JSS 2B">JSS 2B</option>
+                                    <option value="JSS 3A">JSS 3A</option>
+                                    <option value="SS1A">SS1A</option>
+                                    <option value="SS1B">SS1B</option>
+                                    <option value="SS2A">SS2A</option>
+                                    <option value="SS2B">SS2B</option>
+                                    <option value="SS3A">SS3A</option>
+                                    <option value="SS3B">SS3B</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="parentName">Parent/Guardian Name</label>
+                                <input type="text" id="parentName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="parentPhone">Parent Phone Number</label>
+                                <input type="tel" id="parentPhone" class="form-input" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="address">Address</label>
+                                <textarea id="address" class="form-input" rows="3" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Register Student</button>
+                            <button type="reset" class="btn btn-outline">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Powered by <a href="https://veritas.com" target="_blank" class="veritas-link">Veritas</a></p>
+        </div>
+    </footer>
+
+    <script src="include.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+
+        // Admissions page specific functionality
+class AdmissionsPage {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.initializeForm();
+    }
+
+    initializeForm() {
+        const form = document.getElementById('admissionForm');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.handleFormSubmission(form);
+            });
+        }
+    }
+
+    handleFormSubmission(form) {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        
+        // Validate form data
+        if (this.validateForm(data)) {
+            // Simulate API call
+            this.submitAdmission(data);
+        }
+    }
+
+    validateForm(data) {
+        const required = ['firstName', 'lastName', 'dateOfBirth', 'gender', 'class', 'parentName', 'parentPhone', 'address'];
+        for (let field of required) {
+            if (!data[field] || data[field].trim() === '') {
+                this.showNotification(`Please fill in the ${field} field`, 'error');
+                return false;
+            }
+        }
+
+        // Validate phone number
+        const phoneRegex = /^[0-9+\-\s()]{10,}$/;
+        if (!phoneRegex.test(data.parentPhone)) {
+            this.showNotification('Please enter a valid phone number', 'error');
+            return false;
+        }
+
+        return true;
+    }
+
+    submitAdmission(data) {
+        // Simulate API call
+        setTimeout(() => {
+            this.showNotification('Student registered successfully!', 'success');
+            document.getElementById('admissionForm').reset();
+            
+            // Generate student ID (in real app, this would come from backend)
+            const studentId = 'STD' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            console.log('Student registered:', { ...data, studentId });
+            
+        }, 1000);
+    }
+
+    showNotification(message, type = 'info') {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 4px;
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+        `;
+
+        // Set background color based on type
+        const colors = {
+            success: '#10b981',
+            error: '#ef4444',
+            info: '#3b82f6',
+            warning: '#f59e0b'
+        };
+        notification.style.backgroundColor = colors[type] || colors.info;
+
+        document.body.appendChild(notification);
+
+        // Animate in
+        setTimeout(() => {
+            notification.style.opacity = '1';
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+}
+
+    // Initialize admissions page when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        new AdmissionsPage();
+    });
+    </script>
+</body>
+</html>

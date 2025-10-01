@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - School Pass</title>
+    <meta name="description" content="Comprehensive Student Management System designed for Nigerian schools">
+    <meta name="author" content="Schoolpass">
+
+    <meta property="og:title" content="School Pass">
+    <meta property="og:description" content="Comprehensive Student Management System designed for Nigerian schools">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Header Include -->
+    <div data-include="header.html"></div>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to School Pass</h1>
+                <p class="hero-description">
+                    Comprehensive Student Management System designed for Nigerian schools.
+                    Manage students, fees, exams, and academics efficiently.
+                </p>
+                <div class="hero-actions">
+                    <a href="admissions.html" class="btn btn-hero">
+                        <i data-lucide="plus"></i>
+                        Register New Student
+                    </a>
+                    <a href="#" class="btn btn-outline-hero">
+                        <i data-lucide="file-text"></i>
+                        Generate Reports
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Operational Stats -->
+            <div class="stats-grid">
+                <div class="stats-card success clickable" onclick="window.location.href='students.html'">
+                    <div class="stats-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-value">1,247</h3>
+                        <p class="stats-title">Total Students</p>
+                        <p class="stats-description">Active enrolled students</p>
+                        <div class="stats-trend positive">
+                            <i data-lucide="trending-up"></i>
+                            <span>+12%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-card accent clickable" onclick="window.location.href='fees.html'">
+                    <div class="stats-icon">
+                        <i data-lucide="credit-card"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-value">₦8.5M</h3>
+                        <p class="stats-title">Fee Collection</p>
+                        <p class="stats-description">This academic term</p>
+                        <div class="stats-trend positive">
+                            <i data-lucide="trending-up"></i>
+                            <span>+8%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-card success clickable" onclick="window.location.href='attendance.html'">
+                    <div class="stats-icon">
+                        <i data-lucide="user-check"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-value">94.2%</h3>
+                        <p class="stats-title">Attendance Rate</p>
+                        <p class="stats-description">This month average</p>
+                        <div class="stats-trend positive">
+                            <i data-lucide="trending-up"></i>
+                            <span>+3%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-card warning clickable" onclick="window.location.href='support.html'">
+                    <div class="stats-icon">
+                        <i data-lucide="life-buoy"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-value">23</h3>
+                        <p class="stats-title">Support Tickets</p>
+                        <p class="stats-description">5 pending resolution</p>
+                        <div class="stats-trend negative">
+                            <i data-lucide="trending-down"></i>
+                            <span>-15%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assets Section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i data-lucide="building-2"></i>
+                        <h2>Assets</h2>
+                        <span class="section-subtitle">Items of value owned by the company</span>
+                    </div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stats-card success clickable" onclick="window.location.href='#'">
+                        <div class="stats-icon">
+                            <i data-lucide="building-2"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3 class="stats-value">₦45.2M</h3>
+                            <p class="stats-title">Total Asset Value</p>
+                            <p class="stats-description">All operational assets</p>
+                            <div class="stats-trend positive">
+                                <i data-lucide="trending-up"></i>
+                                <span>+5%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats-card accent">
+                        <div class="stats-icon">
+                            <i data-lucide="laptop"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3 class="stats-value">₦12.8M</h3>
+                            <p class="stats-title">IT Equipment</p>
+                            <p class="stats-description">Computers, servers, projectors</p>
+                        </div>
+                    </div>
+
+                    <div class="stats-card default">
+                        <div class="stats-icon">
+                            <i data-lucide="building-2"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3 class="stats-value">₦28.5M</h3>
+                            <p class="stats-title">Buildings & Facilities</p>
+                            <p class="stats-description">Classrooms, laboratories, offices</p>
+                        </div>
+                    </div>
+
+                    <div class="stats-card warning">
+                        <div class="stats-icon">
+                            <i data-lucide="car"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3 class="stats-value">₦3.9M</h3>
+                            <p class="stats-title">Transportation</p>
+                            <p class="stats-description">School buses and vehicles</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content Grid -->
+            <div class="dashboard-grid">
+                <!-- Quick Actions -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i data-lucide="zap"></i>
+                            Quick Actions
+                        </h3>
+                        <p class="card-description">Common tasks and shortcuts</p>
+                    </div>
+                    <div class="card-content">
+                        <a href="admissions.html" class="quick-action-btn">
+                            <i data-lucide="users"></i>
+                            <span>Add New Student</span>
+                        </a>
+                        <a href="f_expense_record.html" class="quick-action-btn">
+                            <i data-lucide="credit-card"></i>
+                            <span>Record Fee Payment</span>
+                        </a>
+                        <a href="exams.html" class="quick-action-btn">
+                            <i data-lucide="file-text"></i>
+                            <span>Schedule Exam</span>
+                        </a>
+                        <a href="attendance.html" class="quick-action-btn">
+                            <i data-lucide="user-check"></i>
+                            <span>Mark Attendance</span>
+                        </a>
+                        <a href="support.html" class="quick-action-btn">
+                            <i data-lucide="life-buoy"></i>
+                            <span>Support Center</span>
+                        </a>
+                        <a href="academic-calendar.html" class="quick-action-btn">
+                            <i data-lucide="calendar"></i>
+                            <span>Academic Calendar</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recent Activities -->
+                <div class="card activities">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i data-lucide="activity"></i>
+                            Recent Activities
+                        </h3>
+                        <p class="card-description">Latest updates and notifications</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-dot success"></div>
+                                <div class="activity-content">
+                                    <p class="activity-title">New Student Registration</p>
+                                    <p class="activity-description">Adebayo Taiwo registered for JSS 1A</p>
+                                    <p class="activity-time">2 hours ago</p>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-dot success"></div>
+                                <div class="activity-content">
+                                    <p class="activity-title">Support Ticket Resolved</p>
+                                    <p class="activity-description">IT equipment issue in Computer Lab resolved</p>
+                                    <p class="activity-time">3 hours ago</p>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-dot info"></div>
+                                <div class="activity-content">
+                                    <p class="activity-title">Fee Payment Received</p>
+                                    <p class="activity-description">₦85,000 received from Chioma Okeke (SS2B)</p>
+                                    <p class="activity-time">4 hours ago</p>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-dot warning"></div>
+                                <div class="activity-content">
+                                    <p class="activity-title">New Support Ticket</p>
+                                    <p class="activity-description">Cafeteria inventory shortage reported</p>
+                                    <p class="activity-time">6 hours ago</p>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-dot info"></div>
+                                <div class="activity-content">
+                                    <p class="activity-title">Exam Results Published</p>
+                                    <p class="activity-description">First Term CA results for JSS 2 published</p>
+                                    <p class="activity-time">1 day ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Powered by <a href="https://veritas.com" target="_blank" class="veritas-link">Veritas</a></p>
+        </div>
+    </footer>
+
+    <script src="include.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>

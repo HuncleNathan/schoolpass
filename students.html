@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - School Pass</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Header -->
+     <div data-include="header.html"></div>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Students</h1>
+                <p class="page-description">Manage student records and information</p>
+                <a href="admissions.html" class="btn btn-primary">
+                    <i data-lucide="plus"></i>
+                    Add Student
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Student List</h3>
+                    <div class="search-box">
+                        <i class="bi bi-search"></i>
+                        <input type="text" id="studentSearch" placeholder="Search students...">
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="table-container">
+                        <table class="table" id="studentsTable">
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Class</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>STD001</td>
+                                    <td>Adebayo Taiwo</td>
+                                    <td>JSS 1A</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-sm">View</button>
+                                        <button class="btn btn-sm btn-outline">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>STD002</td>
+                                    <td>Chioma Okeke</td>
+                                    <td>SS2B</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-sm">View</button>
+                                        <button class="btn btn-sm btn-outline">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>STD003</td>
+                                    <td>Ibrahim Musa</td>
+                                    <td>JSS 3C</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-sm">View</button>
+                                        <button class="btn btn-sm btn-outline">Edit</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Powered by <a href="https://veritas.com" target="_blank" class="veritas-link">Veritas</a></p>
+        </div>
+    </footer>
+
+     <script src="include.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+
+        class StudentsPage {
+    constructor() {
+        this.students = [
+            { id: 'STD001', name: 'Adebayo Taiwo', class: 'JSS 1A', status: 'Active' },
+            { id: 'STD002', name: 'Chioma Okeke', class: 'SS2B', status: 'Active' },
+            { id: 'STD003', name: 'Ibrahim Musa', class: 'JSS 3C', status: 'Active' },
+            { id: 'STD004', name: 'Fatima Abubakar', class: 'SS1A', status: 'Active' },
+            { id: 'STD005', name: 'Emeka Okafor', class: 'JSS 2B', status: 'Active' }
+        ];
+        this.init();
+    }
+
+    init() {
+        this.initializeSearch();
+        this.initializeEventListeners();
+        this.renderStudents();
+    }
+
+    initializeSearch() {
+        const searchInput = document.getElementById('studentSearch');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                this.handleSearch(e.target.value);
+            });
+        }
+    }
+
+    initializeEventListeners() {
+        // Add any student-specific event listeners here
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('view-student')) {
+                this.viewStudent(e.target.dataset.id);
+            }
+            if (e.target.classList.contains('edit-student')) {
+                this.editStudent(e.target.dataset.id);
+            }
+        });
+    }
+
+    handleSearch(query) {
+        const filteredStudents = this.students.filter(student =>
+            student.name.toLowerCase().includes(query.toLowerCase()) ||
+            student.id.toLowerCase().includes(query.toLowerCase()) ||
+            student.class.toLowerCase().includes(query.toLowerCase())
+        );
+        this.renderStudents(filteredStudents);
+    }
+
+    renderStudents(students = this.students) {
+        const tableBody = document.querySelector('#studentsTable tbody');
+        if (tableBody) {
+            tableBody.innerHTML = students.map(student => `
+                <tr>
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td>${student.class}</td>
+                    <td><span class="badge success">${student.status}</span></td>
+                    <td>
+                        <button class="btn btn-sm view-student" data-id="${student.id}">View</button>
+                        <button class="btn btn-sm btn-outline edit-student" data-id="${student.id}">Edit</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+    }
+
+    viewStudent(studentId) {
+        const student = this.students.find(s => s.id === studentId);
+        if (student) {
+            alert(`Viewing student: ${student.name}\nID: ${student.id}\nClass: ${student.class}`);
+        }
+    }
+
+    editStudent(studentId) {
+        const student = this.students.find(s => s.id === studentId);
+        if (student) {
+            alert(`Editing student: ${student.name}`);
+        }
+    }
+}
+
+    // Initialize students page when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        new StudentsPage();
+    });
+    </script>
+</body>
+</html>

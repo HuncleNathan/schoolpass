@@ -1,0 +1,121 @@
+<header class="erp-header">
+    <div class="header-container">
+        <div class="header-row">
+            <div class="logo-container">
+                <h2 class="company-name">School Pass</h2>
+            </div>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="main-navigation" id="mainNavigation">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="bi bi-house"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item nav-dropdown dropdown">
+                        <a class="nav-link dropdown-toggle" id="adminDropdown" role="button">
+                            <i class="bi bi-gear"></i>
+                            <span>Administration</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                            <a class="dropdown-item" href="administration.html"><i class="bi bi-building"></i> Administration Dashboard</a>
+                            <a class="dropdown-item" href="students.html"><i class="bi bi-people"></i> Students</a>
+                            <a class="dropdown-item" href="admissions.html"><i class="bi bi-person-plus"></i> Admissions</a>
+                            <a class="dropdown-item" href="attendance.html"><i class="bi bi-calendar-check"></i> Attendance</a>
+                            <a class="dropdown-item" href="exams.html"><i class="bi bi-file-text"></i> Exams & Results</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-box-arrow-up-right"></i> External Exams</a>
+                            <a class="dropdown-item" href="academic-calendar.html"><i class="bi bi-calendar-event"></i> Academic Calendar</a>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item nav-dropdown dropdown">
+                        <a class="nav-link dropdown-toggle" id="financeDropdown" role="button">
+                            <i class="bi bi-wallet2"></i>
+                            <span>Finance</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="financeDropdown">
+                            <a class="dropdown-item" href="fees.html"><i class="bi bi-credit-card"></i> Fee Management</a>
+                            <a class="dropdown-item" href="f_debtors.html"><i class="bi bi-exclamation-triangle"></i> Debtor Management</a>
+                            <a class="dropdown-item" href="f_expense_record.html"><i class="bi bi-receipt"></i> Expense Records</a>
+                            <a class="dropdown-item" href="f_fee_structure.html"><i class="bi bi-file-text"></i> Fee structure</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-file-text"></i> Financial Statement</a>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item nav-dropdown dropdown">
+                        <a class="nav-link dropdown-toggle" id="personnelDropdown" role="button">
+                            <i class="bi bi-briefcase"></i>
+                            <span>Personnel</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="personnelDropdown">
+                            <a class="dropdown-item" href="personnel.html"><i class="bi bi-people"></i> Staff Management</a>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item nav-dropdown dropdown">
+                        <a class="nav-link dropdown-toggle" id="assetsDropdown" role="button">
+                            <i class="bi bi-box-seam"></i>
+                            <span>Asset & Inventory</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="assetsDropdown">
+                            <a class="dropdown-item" href="#"><i class="bi bi-building"></i> Asset Management</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-laptop"></i> IT Equipment</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-building"></i> Buildings & Facilities</a>
+                            <a class="dropdown-item" href="transportation.html"><i class="bi bi-bus-front"></i> Transportation</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-book"></i> Educational Materials</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-egg-fried"></i> Cafeteria Inventory</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-box-seam"></i> General Inventory</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-shop"></i> Uniform & Merchandise</a>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item nav-dropdown dropdown">
+                        <a class="nav-link dropdown-toggle" id="communicationDropdown" role="button">
+                            <i class="bi bi-chat-dots"></i>
+                            <span>Communication</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="communicationDropdown">
+                            <a class="dropdown-item" href="#"><i class="bi bi-chat-dots"></i> Communication</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-heart"></i> Parent Engagement</a>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="bi bi-ticket"></i>
+                            <span>Meal Tickets</span>
+                        </a>
+                    </li>
+                    
+                    <li class="user-nav">
+                         <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+                            <i class="bi bi-moon"></i>
+                        </button>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle" type="button" id="userDropdown">
+                                <div class="user-avatar">
+                                    <i class="bi bi-person"></i>
+                                </div>
+                                <span class="user-name">Welcome, Admin</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#"><i class="bi bi-person mr-2"></i>My Profile</a>
+                                <a class="dropdown-item" href="settings.html"><i class="bi bi-gear mr-2"></i>Settings</a>
+                                <a class="dropdown-item" href="support.html"><i class="bi bi-headset mr-2"></i>Support</a>
+                                <a class="dropdown-item" href="#"><i class="bi bi-bell mr-2"></i>Notifications</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right mr-2"></i>Logout</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
