@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Ticket System - School Pass</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Header Include -->
+    <div data-include="header.html"></div>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <div class="container">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Meal Ticket System</h1>
+                    <p class="page-description">Manage student meal accounts and vendor services</p>
+                </div>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="stats-grid">
+                <div class="stats-card success">
+                    <div class="stats-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-value">1,247</h3>
+                        <p class="stats-title">Total Students</p>
+                        <p class="stats-description">+12% from last month</p>
+                    </div>
+                </div>
+
+                <div class="stats-card accent">
+                    <div class="stats-icon">
+                        <i data-lucide="wallet"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-value">1,158</h3>
+                        <p class="stats-title">Active Accounts</p>
+                        <p class="stats-description">92.9% participation rate</p>
+                    </div>
+                </div>
+
+                <div class="stats-card default">
+                    <div class="stats-icon">
+                        <i data-lucide="dollar-sign"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-value">$2,847</h3>
+                        <p class="stats-title">Daily Revenue</p>
+                        <p class="stats-description">+8% from yesterday</p>
+                    </div>
+                </div>
+
+                <div class="stats-card warning">
+                    <div class="stats-icon">
+                        <i data-lucide="store"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-value">5</h3>
+                        <p class="stats-title">Active Vendors</p>
+                        <p class="stats-description">2 external partners</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="accounts">Student Accounts</button>
+                    <button class="tab-btn" data-tab="vendors">Vendors</button>
+                    <button class="tab-btn" data-tab="transactions">Transactions</button>
+                </div>
+
+                <!-- Student Accounts Tab -->
+                <div class="tab-content active" id="accounts-tab">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-content">
+                                <div>
+                                    <h3 class="card-title">Student Meal Accounts</h3>
+                                    <p class="card-description">Manage student balances and account status</p>
+                                </div>
+                                <div class="card-actions">
+                                    <div class="search-box">
+                                        
+                                        <input type="text" id="student-search" placeholder="Search students...">
+                                    </div>
+                                    <button class="btn btn-primary" id="top-up-modal-btn">
+                                        <i data-lucide="plus"></i>
+                                        Top Up Account
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="table-container">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Student ID</th>
+                                            <th>Name</th>
+                                            <th>Class</th>
+                                            <th>Balance</th>
+                                            <th>Status</th>
+                                            <th>Last Transaction</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="student-accounts-table">
+                                        <!-- Data will be populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vendors Tab -->
+                <div class="tab-content" id="vendors-tab">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-content">
+                                <div>
+                                    <h3 class="card-title">Vendor Management</h3>
+                                    <p class="card-description">Manage meal service providers and their settings</p>
+                                </div>
+                                <button class="btn btn-primary" id="add-vendor-modal-btn">
+                                    <i data-lucide="plus"></i>
+                                    Add Vendor
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="table-container">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Vendor ID</th>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Commission</th>
+                                            <th>Total Sales</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="vendors-table">
+                                        <!-- Data will be populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transactions Tab -->
+                <div class="tab-content" id="transactions-tab">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-content">
+                                <div>
+                                    <h3 class="card-title">Recent Transactions</h3>
+                                    <p class="card-description">Track all meal purchases and account top-ups</p>
+                                </div>
+                                <div class="card-actions">
+                                    <select class="form-input" id="vendor-filter">
+                                        <option value="all">All Vendors</option>
+                                        <option value="cafeteria">School Cafeteria</option>
+                                        <option value="healthy-bites">Healthy Bites Co.</option>
+                                        <option value="fresh-foods">Fresh Foods Ltd.</option>
+                                    </select>
+                                    <button class="btn btn-outline">
+                                        Export
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="table-container">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Transaction ID</th>
+                                            <th>Student</th>
+                                            <th>Vendor</th>
+                                            <th>Amount</th>
+                                            <th>Type</th>
+                                            <th>Date & Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="transactions-table">
+                                        <!-- Data will be populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Powered by <a href="https://veritas.com" target="_blank" class="veritas-link">Veritas</a></p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="top-up-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Top Up Student Account</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="student-id">Student ID</label>
+                    <input type="text" id="student-id" class="form-input" placeholder="Enter student ID">
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" class="form-input" placeholder="0.00">
+                </div>
+                <div class="form-group">
+                    <label for="payment-method">Payment Method</label>
+                    <select id="payment-method" class="form-input">
+                        <option value="">Select payment method</option>
+                        <option value="cash">Cash</option>
+                        <option value="card">Card</option>
+                        <option value="bank_transfer">Bank Transfer</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary w-full" id="process-top-up">Process Top Up</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="add-vendor-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Vendor</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="vendor-name">Vendor Name</label>
+                    <input type="text" id="vendor-name" class="form-input" placeholder="Enter vendor name">
+                </div>
+                <div class="form-group">
+                    <label for="vendor-type">Vendor Type</label>
+                    <select id="vendor-type" class="form-input">
+                        <option value="">Select vendor type</option>
+                        <option value="internal">Internal</option>
+                        <option value="external">External</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="commission">Commission Rate (%)</label>
+                    <input type="number" id="commission" class="form-input" placeholder="0">
+                </div>
+                <button class="btn btn-primary w-full" id="add-vendor">Add Vendor</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="include.js"></script>
+    <script src="meal_tickets.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>

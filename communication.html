@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication & Collaboration - School Pass</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Header Include -->
+    <div data-include="header.html"></div>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <div class="container">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Communication & Collaboration</h1>
+                    <p class="page-description">Stay connected with staff, students, and parents</p>
+                </div>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="messages">Messages</button>
+                    <button class="tab-btn" data-tab="announcements">Announcements</button>
+                    <button class="tab-btn" data-tab="directory">Staff Directory</button>
+                    <button class="tab-btn" data-tab="meetings">Meetings</button>
+                </div>
+
+                <!-- Messages Tab -->
+                <div class="tab-content active" id="messages-tab">
+                    <div class="chat-layout">
+                        <!-- Conversations List -->
+                        <div class="chat-sidebar">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <i data-lucide="message-square"></i>
+                                        Conversations
+                                    </h3>
+                                    <div class="search-box">
+                                        <i data-lucide="search"></i>
+                                        <input type="text" id="conversation-search" placeholder="Search conversations...">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="conversation-list" id="conversation-list">
+                                        <!-- Conversations will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat Area -->
+                        <div class="chat-main">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="chat-header">
+                                        <h3 class="card-title" id="selected-chat-name">Select a conversation</h3>
+                                        <div class="chat-actions" id="chat-actions" style="display: none;">
+                                            <button class="btn btn-outline btn-sm">
+                                                <i data-lucide="phone"></i>
+                                            </button>
+                                            <button class="btn btn-outline btn-sm">
+                                                <i data-lucide="video"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="chat-messages" id="chat-messages">
+                                        <div class="no-chat-selected">
+                                            <i data-lucide="message-square"></i>
+                                            <p>Select a conversation to start messaging</p>
+                                        </div>
+                                    </div>
+                                    <div class="chat-input-container" id="chat-input" style="display: none;">
+                                        <div class="chat-input">
+                                            <input type="text" id="message-input" placeholder="Type your message...">
+                                            <button class="btn btn-primary" id="send-message">
+                                                <i data-lucide="send"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Announcements Tab -->
+                <div class="tab-content" id="announcements-tab">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-content">
+                                <div>
+                                    <h3 class="card-title">School Announcements</h3>
+                                    <p class="card-description">Important updates and notices</p>
+                                </div>
+                                <button class="btn btn-primary" id="new-announcement-btn">
+                                    <i data-lucide="plus"></i>
+                                    New Announcement
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="announcements-list" id="announcements-list">
+                                <!-- Announcements will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff Directory Tab -->
+                <div class="tab-content" id="directory-tab">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-content">
+                                <div>
+                                    <h3 class="card-title">Staff Directory</h3>
+                                    <p class="card-description">Contact information for all staff members</p>
+                                </div>
+                                <div class="search-box">
+                                    <i data-lucide="search"></i>
+                                    <input type="text" id="staff-search" placeholder="Search staff...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="staff-grid" id="staff-grid">
+                                <!-- Staff cards will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meetings Tab -->
+                <div class="tab-content" id="meetings-tab">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-content">
+                                <div>
+                                    <h3 class="card-title">Meetings & Events</h3>
+                                    <p class="card-description">Schedule and manage meetings with staff and parents</p>
+                                </div>
+                                <button class="btn btn-primary">
+                                    <i data-lucide="plus"></i>
+                                    Schedule Meeting
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="meetings-list" id="meetings-list">
+                                <!-- Meetings will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Powered by <a href="https://veritas.com" target="_blank" class="veritas-link">Veritas</a></p>
+        </div>
+    </footer>
+
+    <!-- New Announcement Modal -->
+    <div class="modal" id="new-announcement-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Announcement</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="announcement-title">Title</label>
+                    <input type="text" id="announcement-title" class="form-input" placeholder="Enter announcement title">
+                </div>
+                <div class="form-group">
+                    <label for="announcement-content">Content</label>
+                    <textarea id="announcement-content" class="form-input" placeholder="Enter announcement content" rows="4"></textarea>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="announcement-priority">Priority</label>
+                        <select id="announcement-priority" class="form-input">
+                            <option value="normal">Normal</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="announcement-target">Target Audience</label>
+                        <select id="announcement-target" class="form-input">
+                            <option value="all">All</option>
+                            <option value="staff">Staff Only</option>
+                            <option value="students">Students Only</option>
+                            <option value="parents">Parents Only</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary w-full" id="publish-announcement">
+                    <i data-lucide="megaphone"></i>
+                    Publish Announcement
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="include.js"></script>
+    <script src="communication.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
