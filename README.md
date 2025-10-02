@@ -1,2 +1,2 @@
 # schoolpass
-The schoolpass management systems aim at streamlining the educational procedures
+The schoolpass management systems aim at making the educational process easier
