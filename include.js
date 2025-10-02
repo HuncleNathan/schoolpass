@@ -1,34 +1,30 @@
 // Function to include HTML content
 function includeHTML() {
-    const includes = document.querySelectorAll('[data-include]');
-    
-    includes.forEach(element => {
-        const file = element.getAttribute('data-include');
+  const headerPlaceholder = document.querySelector('[data-include="header"]');
+  
+  if (headerPlaceholder) {
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        headerPlaceholder.innerHTML = data;
         
-        fetch(file)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                element.innerHTML = data;
-                initializeHeaderFunctionality();
-                updateActiveNavigation();
-                
-                // Re-initialize Lucide icons
-                if (typeof lucide !== 'undefined') {
-                    setTimeout(() => lucide.createIcons(), 100);
-                }
-            })
-            .catch(error => {
-                console.error('Error loading include file:', error);
-                element.innerHTML = `<div style="color: red; padding: 10px; border: 1px solid red; margin: 10px;">
-                    Error loading ${file}: ${error.message}
-                </div>`;
-            });
-    });
+        // Update active state based on current page
+        const currentPage = window.location.pathname.split('/').pop();
+        const navLinks = document.querySelectorAll('.erp-header .nav-link');
+        
+        navLinks.forEach(link => {
+          const linkPage = link.getAttribute('href');
+          if (linkPage === currentPage) {
+            link.parentElement.classList.add('active');
+          } else {
+            link.parentElement.classList.remove('active');
+          }
+        });
+      })
+      .catch(error => {
+        console.error('Error loading header:', error);
+      });
+  }
 }
 
 // Initialize header functionality
